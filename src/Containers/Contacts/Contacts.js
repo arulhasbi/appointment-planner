@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useFormik } from "formik";
 import { validate } from "../../utils/contact-validation";
-import "./Contact.css";
+import "./Contacts.css";
 
 const Contacts = () => {
   const formik = useFormik({
