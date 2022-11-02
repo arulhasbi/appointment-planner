@@ -1,3 +1,11 @@
+.error-box {
+  outline-color: red;
+}
+
+.error-message {
+  color: red;
+}
+
 .full-width {
   width: 100%;
 }
