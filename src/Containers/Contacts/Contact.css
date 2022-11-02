@@ -1,0 +1,13 @@
+.error-box {
+  outline-color: red;
+}
+
+.error-message {
+  color: red;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
