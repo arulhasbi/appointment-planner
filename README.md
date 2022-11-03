@@ -10,10 +10,14 @@ To do the project, actually codecademy provides a dedicated walkthrough, but I d
 
 1.  Contact Page
 
+    ![Screenshot](assets/contacts.png)
+
     - Fetch all contact (if any) and displays it through horizontal scrolling
     - Save a new contact by receiving inputs (name, phone, & email) from users
 
 2.  Appointment Page
+
+    ![Screenshot](assets/appointments.png)  
 
     - Fetch all appointment (if any) and displays it through horizontal scrolling
     - Save a new appointment by receiving inputs (title, contact, date, & time) from users
@@ -43,5 +47,4 @@ To install all of the needed dependencies, then:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any errors in the console
+You may also see any logs in the console when performing any form submission event.
