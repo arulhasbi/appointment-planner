@@ -37,7 +37,11 @@ const Appointments = () => {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.title}
-              className={formik.errors.title ? "error-box" : null}
+              className={
+                formik.errors.title && formik.touched.title
+                  ? "border-b-4 border-red-500"
+                  : "border-b-4 border-indigo-500"
+              }
             />
             {formik.errors.title && formik.touched.title ? (
               <p className="error-message">{formik.errors.title}</p>
@@ -51,9 +55,13 @@ const Appointments = () => {
               id="contact"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              className={formik.errors.contact ? "error-box" : null}
+              className={
+                formik.errors.contact && formik.touched.contact
+                  ? "border-b-4 border-red-500"
+                  : "border-b-4 border-indigo-500"
+              }
             >
-              <option value="">Choose</option>
+              <option value=""></option>
               <option value="contact-1">Contact-1</option>
             </select>
             {formik.errors.contact && formik.touched.contact ? (
@@ -69,7 +77,9 @@ const Appointments = () => {
               dateFormat="MMMM d, yyyy"
               onBlur={formik.handleBlur}
               className={
-                formik.errors.contact ? "full-width error-box" : "full-width "
+                formik.errors.date && formik.touched.date
+                  ? "border-b-4 border-red-500 w-full"
+                  : "border-b-4 border-indigo-500 w-full"
               }
             />
             {formik.errors.date && formik.touched.date ? (
@@ -81,7 +91,9 @@ const Appointments = () => {
             <DatePicker
               name="time"
               className={
-                formik.errors.time ? "full-width error-box" : "full-width "
+                formik.errors.time && formik.touched.time
+                  ? "border-b-4 border-red-500 w-full"
+                  : "border-b-4 border-indigo-500 w-full"
               }
               selected={time}
               onChange={(date) => setTime(date)}
@@ -96,8 +108,15 @@ const Appointments = () => {
               <p className="error-message">{formik.errors.time}</p>
             ) : null}
           </div>
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            className="bg-indigo-600 py-2 rounded-md subpixel-antialiased text-base font-semibold shadow-md text-white"
+          >
+            Submit
+          </button>
         </form>
+        <hr className="my-10" />
+        <p className="underline underline-offset-8 mb-10">Appointment List</p>
       </AppointmentsMaxWidth>
     </AppointmentsWrapper>
   );

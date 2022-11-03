@@ -107,7 +107,7 @@ const Contacts = () => {
           </div>
           <button
             type="submit"
-            className="bg-indigo-200 py-2 rounded-lg subpixel-antialiased text-base font-semibold shadow-md"
+            className="bg-indigo-600 py-2 rounded-md subpixel-antialiased text-base font-semibold shadow-md text-white"
           >
             Submit
           </button>
