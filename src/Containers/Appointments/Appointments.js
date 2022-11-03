@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useFormik } from "formik";
-import { validate } from "../../utils/appointment-validation";
+import { validate } from "../../utils/form-validation/appointment-validation";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";

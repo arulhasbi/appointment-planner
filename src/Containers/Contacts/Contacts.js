@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useFormik } from "formik";
-import { validate } from "../../utils/contact-validation";
+import { validate } from "../../utils/form-validation/contact-validation";
+import { postContact, getContacts } from "../../api/contacts";
 import "./Contacts.css";
 
 const Contacts = () => {
+  const [contacts, setContacts] = useState([]);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -12,10 +14,34 @@ const Contacts = () => {
       email: "",
     },
     validate,
-    onSubmit: (values) => {
-      window.alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      await saveContacts(values);
+      await fetchContacts();
     },
   });
+
+  const saveContacts = async (values) => {
+    try {
+      const response = await postContact(values);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchContacts = async () => {
+    try {
+      const response = await getContacts();
+      setContacts(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchContacts();
+  }, []);
+
   return (
     <ContactsWrapper>
       <ContactsMaxWidth>
