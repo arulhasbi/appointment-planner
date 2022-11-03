@@ -24,15 +24,15 @@ To do the project, actually codecademy provides a dedicated walkthrough, but I d
 
 ### Dependencies
 
-- formik: `^2.2.9`
-- moment: `^2.29.4`
-- msw: `^0.47.4`
-- react-datepicker: `^4.8.0`
-- @mswjs/data: `^0.10.2`
-- @faker-js: `^7.6.0`
-- styled-components: `^5.3.6`
-- react-router-dom: `^6.4.3`
-- Tailwind CSS: `^3.2.1`
+- [formik](https://formik.org/): `^2.2.9`
+- [moment](https://momentjs.com/docs/): `^2.29.4`
+- [msw](https://mswjs.io/docs/): `^0.47.4`
+- [react-datepicker](https://reactdatepicker.com/): `^4.8.0`
+- [@mswjs/data](https://github.com/mswjs/data): `^0.10.2`
+- [@faker-js](https://fakerjs.dev/): `^7.6.0`
+- [styled-components](https://styled-components.com/): `^5.3.6`
+- [react-router-dom](https://v5.reactrouter.com/web/guides/quick-start): `^6.4.3`
+- [Tailwind CSS](https://tailwindcss.com/): `^3.2.1`
 
 ### Available Scripts
 
