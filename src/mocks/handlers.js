@@ -9,7 +9,7 @@ export const handlers = [
       body = resolved;
     });
     try {
-      db.contacts.create({
+      await db.contacts.create({
         name: body.name,
         phone: body.phone,
         email: body.email,
