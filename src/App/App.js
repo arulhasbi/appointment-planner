@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Navigation from "../Components/Navigation";
+import Navigation from "../Components/Navigation/Navigation";
 import Contacts from "../Containers/Contacts/Contacts";
 import Appointments from "../Containers/Appointments/Appointments";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -29,6 +29,8 @@ const AppWrapper = styled.main`
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
 `;
 
 export default App;
