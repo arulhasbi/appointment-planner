@@ -34,6 +34,10 @@ To do the project, actually codecademy provides a dedicated walkthrough, but I d
 
 In the project directory, you can run:
 
+### `npm install`
+
+To install all of the needed dependencies, then:
+
 ### `npm start`
 
 Runs the app in the development mode.\
