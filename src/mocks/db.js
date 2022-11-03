@@ -10,6 +10,7 @@ export const db = factory({
   },
   appointments: {
     id: primaryKey(faker.datatype.uuid),
+    title: String,
     contact: oneOf("contacts"),
     date: String,
     time: String,

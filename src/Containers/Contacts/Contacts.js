@@ -121,9 +121,9 @@ const Contacts = () => {
                 key={contact.id}
                 className="shadow-md w-60 text-center py-5 bg-violet-50 rounded-2xl"
               >
-                <p class="text-md">{contact.name}</p>
-                <p class="text-md">{contact.phone}</p>
-                <p class="text-md">{contact.email}</p>
+                <p className="text-md">{contact.name}</p>
+                <p className="text-md">{contact.phone}</p>
+                <p className="text-md">{contact.email}</p>
               </div>
             ))}
         </ContactList>

@@ -1,29 +1,87 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useFormik } from "formik";
 import { validate } from "../../utils/form-validation/appointment-validation";
+import { postAppointment, getAppointments } from "../../api/appointments";
+import { getContacts } from "../../api/contacts";
 import DatePicker from "react-datepicker";
+import AppointmentList from "../../Components/AppointmentList/AppointmentList";
 
 import "react-datepicker/dist/react-datepicker.css";
 
 import "./Appointments.css";
 
+import moment from "moment";
+
 const Appointments = () => {
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [contacts, setContacts] = useState([]);
+  const [appointments, setAppointments] = useState([]);
+
   const formik = useFormik({
     initialValues: {
       title: "",
       contact: "",
-      date: date,
-      time: time,
+      date: "",
+      time: "",
     },
     validate,
-    enableReinitialize: true,
-    onSubmit: (values) => {
-      window.alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values, { resetForm }) => {
+      await saveAppointment(values);
+      await fetchAppointments();
+      resetForm();
     },
   });
+
+  const saveAppointment = async (values) => {
+    try {
+      const response = await postAppointment(values);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchAppointments = async () => {
+    try {
+      const response = await getAppointments();
+      setAppointments(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchContacts = async () => {
+    try {
+      const response = await getContacts();
+      setContacts(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChangeDate = async (date) => {
+    formik.setValues((prev) => {
+      return {
+        ...prev,
+        date: date,
+      };
+    });
+  };
+
+  const handleChangeTime = async (date) => {
+    formik.setValues((prev) => {
+      return {
+        ...prev,
+        time: date,
+      };
+    });
+  };
+
+  useEffect(() => {
+    fetchContacts();
+    fetchAppointments();
+  }, []);
+
   return (
     <AppointmentsWrapper>
       <AppointmentsMaxWidth>
@@ -50,6 +108,7 @@ const Appointments = () => {
           <div className="form-control">
             <label htmlFor="contact">Contact</label>
             <select
+              value={formik.values.contact}
               style={{ height: 30 }}
               name="contact"
               id="contact"
@@ -62,7 +121,11 @@ const Appointments = () => {
               }
             >
               <option value=""></option>
-              <option value="contact-1">Contact-1</option>
+              {contacts.map((contact) => (
+                <option value={contact.id} key={contact.id}>
+                  {contact.name}
+                </option>
+              ))}
             </select>
             {formik.errors.contact && formik.touched.contact ? (
               <p className="error-message">{formik.errors.contact}</p>
@@ -72,8 +135,8 @@ const Appointments = () => {
             <label htmlFor="date">Date</label>
             <DatePicker
               name="date"
-              selected={date}
-              onChange={(date) => setDate(date)}
+              selected={formik.values.date}
+              onChange={handleChangeDate}
               dateFormat="MMMM d, yyyy"
               onBlur={formik.handleBlur}
               className={
@@ -95,8 +158,8 @@ const Appointments = () => {
                   ? "border-b-4 border-red-500 w-full"
                   : "border-b-4 border-indigo-500 w-full"
               }
-              selected={time}
-              onChange={(date) => setTime(date)}
+              selected={formik.values.time}
+              onChange={handleChangeTime}
               showTimeSelect
               showTimeSelectOnly
               timeIntervals={15}
@@ -117,6 +180,23 @@ const Appointments = () => {
         </form>
         <hr className="my-10" />
         <p className="underline underline-offset-8 mb-10">Appointment List</p>
+        <AppointmentList>
+          {appointments.length !== 0 &&
+            appointments.map((appointment) => (
+              <div
+                key={appointment.id}
+                className="shadow-md w-60 text-center py-5 bg-violet-50 rounded-2xl"
+              >
+                <p className="text-md font-bold">{appointment.title}</p>
+                <p className="text-md">
+                  {moment(appointment.date).format("dddd Do MMM YYYY")}
+                </p>
+                <p className="text-md">
+                  at {moment(appointment.time).format("LT")}
+                </p>
+              </div>
+            ))}
+        </AppointmentList>
       </AppointmentsMaxWidth>
     </AppointmentsWrapper>
   );
