@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useFormik } from "formik";
 import { validate } from "../../utils/form-validation/contact-validation";
 import { postContact, getContacts } from "../../api/contacts";
+import ContactList from "../../Components/ContactList/ContactList";
 import "./Contacts.css";
 
 const Contacts = () => {
@@ -14,8 +15,9 @@ const Contacts = () => {
       email: "",
     },
     validate,
-    onSubmit: async (values) => {
+    onSubmit: async (values, { resetForm }) => {
       await saveContacts(values);
+      resetForm();
       await fetchContacts();
     },
   });
@@ -55,7 +57,11 @@ const Contacts = () => {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.name}
-              className={formik.errors.name ? "error-box" : null}
+              className={
+                formik.errors.name && formik.touched.name
+                  ? "border-b-4 border-red-500"
+                  : "border-b-4 border-indigo-500"
+              }
             />
             {formik.errors.name && formik.touched.name ? (
               <p className="error-message">{formik.errors.name}</p>
@@ -70,6 +76,11 @@ const Contacts = () => {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.phone}
+              className={
+                formik.errors.phone && formik.touched.phone
+                  ? "border-b-4 border-red-500"
+                  : "border-b-4 border-indigo-500"
+              }
             />
             {formik.errors.phone && formik.touched.phone ? (
               <p className="error-message">{formik.errors.phone}</p>
@@ -84,14 +95,38 @@ const Contacts = () => {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.values.email}
+              className={
+                formik.errors.email && formik.touched.email
+                  ? "border-b-4 border-red-500"
+                  : "border-b-4 border-indigo-500"
+              }
             />
             {formik.errors.email && formik.touched.email ? (
               <p className="error-message">{formik.errors.email}</p>
             ) : null}
           </div>
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            className="bg-indigo-200 py-2 rounded-lg subpixel-antialiased text-base font-semibold shadow-md"
+          >
+            Submit
+          </button>
         </form>
-        <hr />
+        <hr className="my-10" />
+        <p className="underline underline-offset-8 mb-10">Contact List</p>
+        <ContactList>
+          {contacts.length !== 0 &&
+            contacts.map((contact) => (
+              <div
+                key={contact.id}
+                className="shadow-md w-60 text-center py-5 bg-violet-50 rounded-2xl"
+              >
+                <p class="text-md">{contact.name}</p>
+                <p class="text-md">{contact.phone}</p>
+                <p class="text-md">{contact.email}</p>
+              </div>
+            ))}
+        </ContactList>
       </ContactsMaxWidth>
     </ContactsWrapper>
   );
