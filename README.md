@@ -4,11 +4,7 @@ Hi, it's me again with another react project from codecademy full-stack engineer
 
 ### Project Description
 
-To do the project, actually codecademy provides a dedicated walkthrough, but I decided not to follow it. Instead, I challenge myself to come up with ideas on how the appointment planner would looks like, but in its simple, beginner-friendly form and yet still demonstrate the _appointment planner_. In the end, the point of this project is to acquaint myself more about react library and its features like life-cycle, hooks, router, etc.
-
-### Project Screen Shots
-
-![Screenshot](ss-final.png)
+To do the project, actually codecademy provides a dedicated walkthrough, but I decided not to follow it. Instead, I challenge myself to come up with ideas on how the appointment planner would looks like, but in its simple, beginner-friendly form and yet still demonstrate the _appointment planner_. In the end, the point of this project is to acquaint myself more about react library and its features like life-cycle, hooks, router, etc. 
 
 1.  Contact Page
 
@@ -19,6 +15,10 @@ To do the project, actually codecademy provides a dedicated walkthrough, but I d
 
     - Fetch all appointment (if any) and displays it through horizontal scrolling
     - Save a new appointment by receiving inputs (title, contact, date, & time) from users
+
+### Project Screen Shots
+
+![Screenshot](ss-final.png)
 
 ### Dependencies
 
