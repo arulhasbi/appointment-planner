@@ -8,16 +8,14 @@ To do the project, actually codecademy provides a dedicated walkthrough, but I d
 
 ### Project Screen Shots
 
-1.  Contact Page
+![Screenshot](ss-final.png)
 
-    ![Screenshot](assets/contacts.png)
+1.  Contact Page
 
     - Fetch all contact (if any) and displays it through horizontal scrolling
     - Save a new contact by receiving inputs (name, phone, & email) from users
 
 2.  Appointment Page
-
-    ![Screenshot](assets/appointments.png)  
 
     - Fetch all appointment (if any) and displays it through horizontal scrolling
     - Save a new appointment by receiving inputs (title, contact, date, & time) from users
